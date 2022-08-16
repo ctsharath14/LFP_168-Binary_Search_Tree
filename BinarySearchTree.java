@@ -8,9 +8,9 @@ public class BinarySearchTree<K extends Comparable<K>> {
     }
 
     /* This method first checks if binary tree has root or not
-     *  then adds root key.Then next node is compared with root key,if
-     *  it's value is less than root its added to left node & if
-     *  it's value is more than root its added to right node. */
+     * then adds root key.Then next node is compared with root key,if
+     * it's value is less than root its added to left node & if
+     * it's value is more than root its added to right node. */
     public Node<K> addRecursively(Node<K> current, K key) {
         if (current == null)
             return new Node<>(key);
@@ -25,4 +25,12 @@ public class BinarySearchTree<K extends Comparable<K>> {
         return current;
     }
 
+    public int getRecursive(Node<K> current) {
+        return current == null ? 0 : 1 + this.getRecursive(current.leftNode) + this.getRecursive(current.rightNode);
+    }
+
+    //returns the size of Binary Search Tree
+    public int getSize() {
+        return this.getRecursive(root);
+    }
 }
