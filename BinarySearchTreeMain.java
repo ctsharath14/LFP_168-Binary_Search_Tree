@@ -21,7 +21,17 @@ public class BinarySearchTreeMain {
             binaryTree.add(number);
         }
         System.out.println(binaryTree.root);
-        System.out.println("\nSize is : " + binaryTree.getSize());
+        System.out.println("\nThe Binary Tree size is : " + binaryTree.getSize());
+
+        //UC3- search 63 in Binary search tree
+        System.out.println("\nSearch for node 63 in Binary search tree:");
+        if (binaryTree.isPresent(63) == true) {
+            System.out.println("--------->Node 63 is present.");
+        }
+        else {
+            System.out.println("--------->nNode 63 is absent.");
+        }
 
     }
+
 }

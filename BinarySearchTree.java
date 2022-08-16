@@ -12,6 +12,7 @@ public class BinarySearchTree<K extends Comparable<K>> {
      * it's value is less than root its added to left node & if
      * it's value is more than root its added to right node. */
     public Node<K> addRecursively(Node<K> current, K key) {
+
         if (current == null)
             return new Node<>(key);
         int compareResult = key.compareTo(current.key);
@@ -23,6 +24,7 @@ public class BinarySearchTree<K extends Comparable<K>> {
             current.rightNode = addRecursively(current.rightNode, key);
         }
         return current;
+
     }
 
     public int getRecursive(Node<K> current) {
@@ -32,5 +34,29 @@ public class BinarySearchTree<K extends Comparable<K>> {
     //returns the size of Binary Search Tree
     public int getSize() {
         return this.getRecursive(root);
+    }
+
+    //returns true if node is present
+    public boolean isPresent(K value) {
+        return search(root, value);
+    }
+
+    /* This method recursively compares root key &
+     * searches for left or right nodes */
+    public boolean search(Node<K> root, K value) {
+
+        if (root != null && root.key == value) {
+            return true;
+        }
+        if (root == null) {
+            return false;
+        }
+        if (root.key.compareTo(value) < 0) {
+            return search(root.rightNode, value);
+        }
+        else {
+            return search(root.leftNode, value);
+
+        }
     }
 }
